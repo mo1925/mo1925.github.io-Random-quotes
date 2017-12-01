@@ -6,7 +6,11 @@ function getQuote(data) {
     data.quoteAuthor = 'Unknown';
         
   }
-  $("#author").text('Author: ' + data.quoteAuthor);  
+  $("#author").text('Author: ' + data.quoteAuthor);
+    $('#shareQuote').on('click', function(){
+        window.open('https://twitter.com/intent/tweet?text='+ encodeURIComponent(data.quoteText)+' Said by -- '+ data.quoteAuthor);
+    });
+
 };
 
 $(document).ready(function() {
@@ -17,3 +21,5 @@ $(document).ready(function() {
 $("#newQuote").click(function() {
   $.getJSON(url, getQuote, 'jsonp');
 });
+
+//use event delegation
